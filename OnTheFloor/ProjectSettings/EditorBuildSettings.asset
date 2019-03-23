@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
-    guid: e6a6fa04348cb45c9b0221eb19c946da
+    path: Assets/Scenes/Point&PlaneDetection.unity
+    guid: 1a7335c6d8ebc134fabee9854d3967c2
   m_configObjects: {}
