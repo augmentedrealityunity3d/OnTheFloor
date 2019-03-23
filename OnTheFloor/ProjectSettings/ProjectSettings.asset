@@ -156,8 +156,8 @@ PlayerSettings:
     Android: com.AR.OnTheFloor
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 24
-  AndroidTargetSdkVersion: 24
+  AndroidMinSdkVersion: 25
+  AndroidTargetSdkVersion: 25
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
