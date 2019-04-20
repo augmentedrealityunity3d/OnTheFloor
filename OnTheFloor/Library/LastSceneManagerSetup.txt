@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Point&PlaneDetection.unity
+- path: Assets/Karshan/Scene 1.unity
   isLoaded: 1
   isActive: 1
