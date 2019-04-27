@@ -252,6 +252,7 @@
     <None Include="Assets\GoogleARCore\Examples\HelloAR\Materials\Shaders\PlaneGrid.shader" />
     <None Include="Assets\GoogleARCore\Examples\HelloAR\Materials\Shaders\PointCloud.shader" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PointCloud.shader" />
+    <None Include="Assets\Materials\Shaders\Grass.shader" />
     <None Include="Assets\GoogleARCore\Examples\HelloAR\Materials\Shaders\MobileDiffuseWithLightEstimation.shader" />
     <None Include="Assets\GoogleARCore\Examples\ComputerVision\Materials\EdgeDetectionBackground.shader" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileSpecularWithLightEstimation.shader" />
