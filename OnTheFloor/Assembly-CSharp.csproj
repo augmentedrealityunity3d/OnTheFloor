@@ -243,7 +243,9 @@
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPSessionStatus.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPTrackingState.cs" />
     <Compile Include="Assets\Karshan\buttonClick.cs" />
+    <Compile Include="Assets\Scripts\AutoSceneChange.cs" />
     <Compile Include="Assets\Scripts\PlaneVisualizerManager.cs" />
+    <Compile Include="Assets\Scripts\SceneChange.cs" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PlaneGrid.shader" />
     <None Include="Assets\GoogleARCore\Examples\HelloAR\Materials\Shaders\MobileSpecularWithLightEstimation.shader" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileDiffuseWithLightEstimation.shader" />

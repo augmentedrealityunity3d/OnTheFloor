@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class AutoSceneChange : MonoBehaviour{
 
-    private float timer = 3;
+    public float timer;
+    public int sceneNumber;
 
     void Update()
     {
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneNumber);
         }
     }
 }
