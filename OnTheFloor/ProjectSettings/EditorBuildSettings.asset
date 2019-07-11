@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: d7f8eb8ceef188f4d8fd690869cddccc
   - enabled: 1
-    path: Assets/Scenes/Point&PlaneDetection.unity
-    guid: 1a7335c6d8ebc134fabee9854d3967c2
+    path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
+    guid: e6a6fa04348cb45c9b0221eb19c946da
   m_configObjects: {}
