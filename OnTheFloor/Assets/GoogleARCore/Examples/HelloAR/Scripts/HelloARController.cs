@@ -65,6 +65,14 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private bool m_IsQuitting = false;
 
+
+
+
+        //Prasanth Works
+        public GameObject Tile;
+
+
+
         /// <summary>
         /// The Unity Update() method.
         /// </summary>
@@ -100,11 +108,13 @@ namespace GoogleARCore.Examples.HelloAR
                     GameObject prefab;
                     if (hit.Trackable is FeaturePoint)
                     {
-                        prefab = AndyPointPrefab;
+                        //prefab = AndyPointPrefab;
+                        prefab = Tile;
                     }
                     else
                     {
-                        prefab = AndyPlanePrefab;
+                        //prefab = AndyPlanePrefab;
+                        prefab = Tile;
                     }
 
                     // Instantiate Andy model at the hit pose.
