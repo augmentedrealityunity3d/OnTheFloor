@@ -140,7 +140,14 @@ namespace GoogleARCoreInternal
 
         public void ResetSession()
         {
-            OnSessionSetEnabled(false);
+            //Prasanth Work
+            if (OnSessionSetEnabled != null)
+            {
+                OnSessionSetEnabled(false);
+            }
+
+            //OnSessionSetEnabled(false);
+
             _Initialize();
             ExternApi.ArPresto_reset();
         }

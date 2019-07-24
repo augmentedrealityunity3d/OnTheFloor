@@ -243,6 +243,9 @@
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPSessionStatus.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPTrackingState.cs" />
     <Compile Include="Assets\Karshan\buttonClick.cs" />
+    <Compile Include="Assets\Scripts\AR Scripts\Controller.cs" />
+    <Compile Include="Assets\Scripts\AR Scripts\Surface.cs" />
+    <Compile Include="Assets\Scripts\AR Scripts\SurfaceGenerator.cs" />
     <Compile Include="Assets\Scripts\Common\AutoSceneChange.cs" />
     <Compile Include="Assets\Scripts\Common\SceneChange.cs" />
     <Compile Include="Assets\Scripts\Leftbar.cs" />

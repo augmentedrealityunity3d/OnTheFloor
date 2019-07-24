@@ -614,6 +614,7 @@ GameObject:
   - component: {fileID: 711829886}
   - component: {fileID: 711829885}
   - component: {fileID: 711829884}
+  - component: {fileID: 711829887}
   m_Layer: 5
   m_Name: Add Button
   m_TagString: Untagged
@@ -680,7 +681,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 711829885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 711829887}
+        m_MethodName: OnClickSceneChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &711829885
@@ -720,6 +732,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711829882}
   m_CullTransparentMesh: 0
+--- !u!114 &711829887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711829882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a62570d1d4725145a1cafc1fffc8bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNumber: 2
 --- !u!1 &760118835
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00002661346, y: 1.045981}
+  m_AnchoredPosition: {x: -0.00002661346, y: -0.0000068722707}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!20 &896679035 stripped
@@ -2053,7 +2078,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1202334231}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.11891953
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

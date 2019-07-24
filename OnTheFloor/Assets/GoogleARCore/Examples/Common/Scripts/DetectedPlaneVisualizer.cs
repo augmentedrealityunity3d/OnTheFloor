@@ -90,9 +90,17 @@ namespace GoogleARCore.Examples.Common
             }
             else if (m_DetectedPlane.TrackingState != TrackingState.Tracking)
             {
-                 m_MeshRenderer.enabled = false;
-                 return;
+                m_MeshRenderer.enabled = false;
+                return;
             }
+
+            //prasanth works 
+            //else if (!m_DetectedPlane.IsValid || m_DetectedPlane.TrackingState != TrackingState.Tracking)
+            //{
+            //    m_MeshRenderer.enabled = false;
+            //    return;
+            //}
+
 
             m_MeshRenderer.enabled = true;
 
