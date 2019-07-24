@@ -206,8 +206,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &261210446
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +510,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
->>>>>>> 82fa140bad29504c5276a88edea332311cc6bce7
 --- !u!1 &627916101
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,10 +560,7 @@ MonoBehaviour:
     type: 3}
   AndyPointPrefab: {fileID: 1190091649889860, guid: b27e8d7fe70df464188ea5dcf2af0bb3,
     type: 3}
-<<<<<<< HEAD
   Tile: {fileID: 679344377412645773, guid: 501958a4d2a4d24428c545f862d98841, type: 3}
-=======
->>>>>>> 82fa140bad29504c5276a88edea332311cc6bce7
 --- !u!1001 &688001843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,8 +602,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c539aa4fa1bac4b4da61761b0699b48b, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &711829882
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,15 +791,12 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00002661346, y: 1.045981}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
->>>>>>> 82fa140bad29504c5276a88edea332311cc6bce7
 --- !u!20 &896679035 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 20155940112608238, guid: c10877f7cd5764de18d46d7b777d1faa,
     type: 3}
   m_PrefabInstance: {fileID: 97747990}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1056048018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1304,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210474443}
   m_CullTransparentMesh: 0
->>>>>>> 82fa140bad29504c5276a88edea332311cc6bce7
 --- !u!1 &1233457656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,8 +1411,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!224 &1434541474 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224798383043448138, guid: c539aa4fa1bac4b4da61761b0699b48b,
@@ -2111,7 +2097,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999816757}
   m_CullTransparentMesh: 0
->>>>>>> 82fa140bad29504c5276a88edea332311cc6bce7
 --- !u!1 &2083512464
 GameObject:
   m_ObjectHideFlags: 0
