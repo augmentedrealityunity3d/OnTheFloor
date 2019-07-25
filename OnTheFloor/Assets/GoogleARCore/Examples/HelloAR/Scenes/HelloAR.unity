@@ -813,7 +813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00002661346, y: -0.0000068722707}
+  m_AnchoredPosition: {x: -0.00002661346, y: 0.03420606}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!20 &896679035 stripped
@@ -2078,7 +2078,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1202334231}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 0.9788552
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2153,6 +2153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 3}
+  tile: {fileID: 679344377412645773, guid: 501958a4d2a4d24428c545f862d98841, type: 3}
 --- !u!4 &2083512466
 Transform:
   m_ObjectHideFlags: 0

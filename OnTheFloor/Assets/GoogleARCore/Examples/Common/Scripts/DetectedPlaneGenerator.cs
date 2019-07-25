@@ -40,6 +40,11 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
 
+
+        //Prasanth Work
+        public GameObject tile;
+
+
         /// <summary>
         /// The Unity Update method.
         /// </summary>
@@ -51,15 +56,20 @@ namespace GoogleARCore.Examples.Common
                 return;
             }
 
-            // Iterate over planes found in this frame and instantiate corresponding GameObjects to visualize them.
             Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
-            for (int i = 0; i < m_NewPlanes.Count; i++)
+            //for (int i = 0; i < m_NewPlanes.Count; i++)
+            //{
+            //    // Instantiate a plane visualization prefab and set it to track the new plane. The transform is set to
+            //    // the origin with an identity rotation since the mesh for our prefab is updated in Unity World
+            //    // coordinates.
+            //    GameObject planeObject = Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
+            //    planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+            //}
+
+            foreach(var curPlane in m_NewPlanes)
             {
-                // Instantiate a plane visualization prefab and set it to track the new plane. The transform is set to
-                // the origin with an identity rotation since the mesh for our prefab is updated in Unity World
-                // coordinates.
-                GameObject planeObject = Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
-                planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+                GameObject planeObject = Instantiate(tile, Vector3.zero, Quaternion.identity, transform);
+                planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(curPlane);
             }
         }
     }
