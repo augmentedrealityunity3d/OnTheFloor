@@ -329,6 +329,12 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data">
+      <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/On The Floor/Plugins/Mono.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/On The Floor/Plugins/Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
     <Reference Include="Google.IOSResolver_v1.2.95.0">
       <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.95.0.dll</HintPath>
     </Reference>
@@ -340,12 +346,6 @@
     </Reference>
     <Reference Include="Google.VersionHandlerImpl_v1.2.95.0">
       <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.95.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data">
-      <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/Plugins/Mono.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/prasanth/Desktop/On The Floor/OnTheFloor/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
