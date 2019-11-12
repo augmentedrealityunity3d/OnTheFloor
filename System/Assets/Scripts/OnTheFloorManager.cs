@@ -29,7 +29,7 @@ public class OnTheFloorManager : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
         sideMenuClickedCount = 0;
 
         ResetTileSprite();
