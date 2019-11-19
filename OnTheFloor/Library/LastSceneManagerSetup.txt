@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/On The Floor/Scenes/OnTheFloor.unity
-  isLoaded: 1
-  isActive: 1

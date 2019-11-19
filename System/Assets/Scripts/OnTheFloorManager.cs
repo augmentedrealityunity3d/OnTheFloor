@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +15,6 @@ public class OnTheFloorManager : MonoBehaviour
     public int defaultTileSizeOption;
     public Transform tileResizeParent;
     private int sideMenuClickedCount;
-    private float sideNavigationWidth = 200;
     #endregion
 
     private void Awake()
@@ -30,22 +27,28 @@ public class OnTheFloorManager : MonoBehaviour
 
     private void Start()
     {
+        float pixelPerUnit = Screen.height / 20; //Camera Z = 10
+        float sideNavWidthPix = Screen.width * 0.25f;
+        float widthUnits = sideNavWidthPix / pixelPerUnit;
+
+        sideNavigation.transform.localScale = new Vector3(widthUnits / 8, sideNavigation.transform.localScale.y, sideNavigation.transform.localScale.z);
+
         sideMenuClickedCount = 0;
 
         ResetTileSprite();
-
-        //TODO:REPLACE LOOP COUNT WITH DB COUNT
         GenerateDynamicButtonForSideMenu();
     }
 
     #region SIDE MENU FUNCTONS
     private void GenerateDynamicButtonForSideMenu()
     {
-        for (int i = 0; i < 3; i++)
+        int dbLength = 3;// Databse.Instance.GetDatabaseLength();
+
+        for (int i = 0; i < dbLength; i++)
         {
             Button btn = Instantiate(tileButtonPrefab, tileButtonsParent);
             btn.GetComponent<Image>().sprite = Resources.Load<Sprite>("Tiles/" + (i + 1));
-            btn.GetComponent<TileButtonId>().SetTileId(i+1);
+            btn.GetComponent<TileButtonId>().SetTileId(i + 1);
         }
     }
 
@@ -96,13 +99,13 @@ public class OnTheFloorManager : MonoBehaviour
         //Move In
         if (sideMenuClickedCount == 0)
         {
-            sideNavigation.localPosition = sideNavigation.localPosition + new Vector3(10000 + sideNavigationWidth * 0.5f, 0, 0);
+            sideNavigation.localPosition = sideNavigation.localPosition + new Vector3(10000, 0, 0);
             sideMenuClickedCount = 1;
         }
         //Move Out
         else if (sideMenuClickedCount == 1)
         {
-            sideNavigation.localPosition = sideNavigation.localPosition + new Vector3(-(10000 + sideNavigationWidth * 0.5f), 0, 0);
+            sideNavigation.localPosition = sideNavigation.localPosition + new Vector3(-10000, 0, 0);
             sideMenuClickedCount = 0;
         }
     }
