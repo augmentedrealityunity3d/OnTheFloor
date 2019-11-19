@@ -108,7 +108,7 @@ namespace GoogleARCore.Examples.HelloAR
                     }
 
                     // Instantiate Andy model at the hit pose.
-                    var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
+                    var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation, OnTheFloorManager.Instance.tilesParent);
 
                     // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
                     andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
