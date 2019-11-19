@@ -109,6 +109,7 @@ namespace GoogleARCore.Examples.HelloAR
 
                     // Instantiate Andy model at the hit pose.
                     var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation, OnTheFloorManager.Instance.tilesParent);
+                    OnTheFloorManager.Instance.IncreaseTileCount();
 
                     // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
                     andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
@@ -118,7 +119,7 @@ namespace GoogleARCore.Examples.HelloAR
                     var anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
                     // Make Andy model a child of the anchor.
-                    andyObject.transform.parent = anchor.transform;
+                    //andyObject.transform.parent = anchor.transform;
                 }
             }
         }

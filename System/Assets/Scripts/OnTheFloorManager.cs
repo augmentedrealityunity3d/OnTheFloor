@@ -14,7 +14,9 @@ public class OnTheFloorManager : MonoBehaviour
     public Transform tilesParent;
     public int defaultTileSizeOption;
     public Transform tileResizeParent;
+    public Text tileCount;
     private int sideMenuClickedCount;
+    private int tileCountNumber;
     #endregion
 
     private void Awake()
@@ -34,6 +36,8 @@ public class OnTheFloorManager : MonoBehaviour
         sideNavigation.transform.localScale = new Vector3(widthUnits / 8, sideNavigation.transform.localScale.y, sideNavigation.transform.localScale.z);
 
         sideMenuClickedCount = 0;
+        tileCountNumber = 0;
+        tileCount.text = tileCountNumber.ToString();
 
         ResetTileSprite();
         GenerateDynamicButtonForSideMenu();
@@ -125,6 +129,14 @@ public class OnTheFloorManager : MonoBehaviour
         }
 
         tileResizeParent.GetChild(defaultTileSizeOption - 1).GetComponent<Toggle>().isOn = true;
+    }
+    #endregion
+
+    #region COMMON FUNCTIONS
+    internal void IncreaseTileCount()
+    {
+        tileCountNumber++;
+        tileCount.text = tileCountNumber.ToString("0,0");
     }
     #endregion
 }
