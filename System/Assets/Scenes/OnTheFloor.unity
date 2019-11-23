@@ -951,9 +951,9 @@ MonoBehaviour:
   FirstPersonCamera: {fileID: 2059604096}
   DetectedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 3}
-  AndyPlanePrefab: {fileID: 4906958360423851607, guid: 7995bf0cd526ae746bf32b39c4f27e5b,
+  AndyPlanePrefab: {fileID: 1190091649889860, guid: 242a320930b81430ba610f94f9b760c8,
     type: 3}
-  AndyPointPrefab: {fileID: 4906958360423851607, guid: 7995bf0cd526ae746bf32b39c4f27e5b,
+  AndyPointPrefab: {fileID: 1190091649889860, guid: b27e8d7fe70df464188ea5dcf2af0bb3,
     type: 3}
 --- !u!4 &511592565
 Transform:
@@ -2111,7 +2111,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 330175417}
-        m_MethodName: RemoveTileImage
+        m_MethodName: DeleteTileImage
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3176,7 +3176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.4, y: 0.000022137161}
+  m_AnchoredPosition: {x: 29.4, y: 0.000023343744}
   m_SizeDelta: {x: -29.4, y: 496.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1829482934
@@ -3832,7 +3832,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 201782803}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.9997747
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

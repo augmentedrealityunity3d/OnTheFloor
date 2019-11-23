@@ -9,7 +9,8 @@ public class Databse : MonoBehaviour
     public static Databse Instance { get; private set; }
 
     private string conn;
-    private IDbConnection dbconn;
+
+    internal IDbConnection dbconn;
     private IDataReader reader;
 
     private void Awake()
@@ -20,76 +21,100 @@ public class Databse : MonoBehaviour
         }
 
         conn = "URI=file:" + Application.dataPath + "/On_the_floor.s3db";
-        dbconn = (IDbConnection)new SqliteConnection(conn);
-        dbconn.Open();
-    }
-
-    internal byte[] LoadImage()
-    {
-        IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "SELECT image FROM TileList";
-        dbcmd.CommandText = sqlQuery;
-
-        byte[] tileImagesBytes = null;
 
         try
         {
-
-            reader = dbcmd.ExecuteReader();
-
-            while (reader.Read())
+            using (dbconn = new SqliteConnection(conn))
             {
-                tileImagesBytes = (System.Byte[])reader[0];
+                dbconn.Open();
             }
-
-            dbcmd.Dispose();
-            dbcmd = null;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Debug.LogError("Load Image Error: " + e);
+            Debug.LogError("Tiles Load Connection Error: " + ex);
         }
-
-
-        return tileImagesBytes;
     }
 
-    public void RemoveTileImage(string Delete_by_id)
+    //internal byte[] LoadImage()
+    //{
+    //    IDbCommand dbcmd = dbconn.CreateCommand();
+    //    string sqlQuery = "SELECT image FROM TileList";
+    //    dbcmd.CommandText = sqlQuery;
+
+    //    byte[] tileImagesBytes = null;
+
+    //    try
+    //    {
+
+    //        reader = dbcmd.ExecuteReader();
+
+    //        while (reader.Read())
+    //        {
+    //            tileImagesBytes = (System.Byte[])reader[0];
+    //        }
+
+    //        dbcmd.Dispose();
+    //        dbcmd = null;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.LogError("Load Image Error: " + e);
+    //    }
+
+
+    //    return tileImagesBytes;
+    //}
+
+    public void DeleteTileImage(string id)
     {
-        using (dbconn = new SqliteConnection(conn))
+        try
         {
-            IDbCommand dbcmd = dbconn.CreateCommand();
+            using (IDbConnection dbconnection = new SqliteConnection(conn))
+            {
+                dbconnection.Open();
 
-            string sqlQuery = "DELETE FROM TileList where id =" + Delete_by_id;
-            dbcmd.CommandText = sqlQuery;
-            IDataReader reader = dbcmd.ExecuteReader();
-
-            dbcmd.Dispose();
-            dbcmd = null;
+                try
+                {
+                    using (IDbCommand dbcmd = dbconnection.CreateCommand())
+                    {
+                        dbcmd.CommandText = string.Format("DELETE FROM TileList WHERE id = \"{0}\"", id);
+                        dbcmd.ExecuteScalar();
+                        Debug.Log("Tile Succesfully Deleted");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Debug.LogError("Delete Db Command Error: " + ex);
+                }
+                finally
+                {
+                    dbconnection.Close();
+                }
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError("Delete Db Connection Error: " + ex);
         }
     }
 
-    internal int GetDatabaseLength()
+    //internal int GetDatabaseLength()
+    //{
+    //    IDbCommand dbcmd = dbconn.CreateCommand();
+    //    string sqlQuery = "SELECT * FROM TileList";
+    //    dbcmd.CommandText = sqlQuery;
+    //    reader = dbcmd.ExecuteReader();
+
+    //    int length = reader.FieldCount - 1;
+
+    //    dbcmd.Dispose();
+    //    dbcmd = null;
+
+    //    return length;
+    //}
+
+    internal void CloseDbConnection(IDbConnection dbconn)
     {
-        IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "SELECT * FROM TileList";
-        dbcmd.CommandText = sqlQuery;
-        reader = dbcmd.ExecuteReader();
-
-        int length = reader.FieldCount - 1;
-
-        dbcmd.Dispose();
-        dbcmd = null;
-
-        return length;
-    }
-    
-    internal void CloseDatabse()
-    {
-        reader.Close();
-        reader = null;
-
         dbconn.Close();
-        dbconn = null;
     }
 }
