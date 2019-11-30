@@ -9,9 +9,9 @@ public class Databse : MonoBehaviour
     public static Databse Instance { get; private set; }
 
     private string conn;
-
     internal IDbConnection dbconn;
-    private IDataReader reader;
+
+    internal int selectedTileId; //To Delete the selected Tile
 
     private void Awake()
     {
@@ -35,37 +35,7 @@ public class Databse : MonoBehaviour
         }
     }
 
-    //internal byte[] LoadImage()
-    //{
-    //    IDbCommand dbcmd = dbconn.CreateCommand();
-    //    string sqlQuery = "SELECT image FROM TileList";
-    //    dbcmd.CommandText = sqlQuery;
-
-    //    byte[] tileImagesBytes = null;
-
-    //    try
-    //    {
-
-    //        reader = dbcmd.ExecuteReader();
-
-    //        while (reader.Read())
-    //        {
-    //            tileImagesBytes = (System.Byte[])reader[0];
-    //        }
-
-    //        dbcmd.Dispose();
-    //        dbcmd = null;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Debug.LogError("Load Image Error: " + e);
-    //    }
-
-
-    //    return tileImagesBytes;
-    //}
-
-    public void DeleteTileImage(string id)
+    public void DeleteTileImage()
     {
         try
         {
@@ -77,7 +47,7 @@ public class Databse : MonoBehaviour
                 {
                     using (IDbCommand dbcmd = dbconnection.CreateCommand())
                     {
-                        dbcmd.CommandText = string.Format("DELETE FROM TileList WHERE id = \"{0}\"", id);
+                        dbcmd.CommandText = string.Format("DELETE FROM TileList WHERE id = \"{0}\"", selectedTileId);
                         dbcmd.ExecuteScalar();
                         Debug.Log("Tile Succesfully Deleted");
                     }

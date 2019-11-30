@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -84,6 +86,8 @@ public class OnTheFloorManager : MonoBehaviour
     {
         if (tilesParent.childCount > 0)
         {
+            Databse.Instance.selectedTileId = tileId;
+
             for (int i = 0; i < tilesParent.childCount; i++)
             {
                 tilesParent.GetChild(i).GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + tileId);
@@ -137,6 +141,47 @@ public class OnTheFloorManager : MonoBehaviour
     {
         tileCountNumber++;
         tileCount.text = tileCountNumber.ToString("0,0");
+    }
+
+    public void AddImageInDb()
+    {
+        List<string> results = new List<string>();
+        HashSet<string> allowedExtesions = new HashSet<string>() { ".png", ".jpg", ".jpeg" };
+
+        try
+        {
+            AndroidJavaClass mediaClass = new AndroidJavaClass("android.provider.MediaStore$Images$Media");
+
+            const string dataTag = "_data";
+
+            string[] projection = new string[] { dataTag };
+            AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = player.GetStatic<AndroidJavaObject>("currentActivity");
+
+            string[] urisToSearch = new string[] { "EXTERNAL_CONTENT_URI", "INTERNAL_CONTENT_URI" };
+            foreach (string uriToSearch in urisToSearch)
+            {
+                AndroidJavaObject externalUri = mediaClass.GetStatic<AndroidJavaObject>(uriToSearch);
+                AndroidJavaObject finder = currentActivity.Call<AndroidJavaObject>("managedQuery", externalUri, projection, null, null, null);
+                bool foundOne = finder.Call<bool>("moveToFirst");
+                while (foundOne)
+                {
+                    int dataIndex = finder.Call<int>("getColumnIndex", dataTag);
+                    string data = finder.Call<string>("getString", dataIndex);
+                    if (allowedExtesions.Contains(Path.GetExtension(data).ToLower()))
+                    {
+                        string path = @"file:///" + data;
+                        results.Add(path);
+                    }
+
+                    foundOne = finder.Call<bool>("moveToNext");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error try to call phone gallery: " + ex);
+        }
     }
     #endregion
 }
