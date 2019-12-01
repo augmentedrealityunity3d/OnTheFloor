@@ -45,6 +45,14 @@ public class OnTheFloorManager : MonoBehaviour
         GenerateDynamicButtonForSideMenu();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     #region SIDE MENU FUNCTONS
     private void GenerateDynamicButtonForSideMenu()
     {
@@ -56,6 +64,8 @@ public class OnTheFloorManager : MonoBehaviour
             btn.GetComponent<Image>().sprite = Resources.Load<Sprite>("Tiles/" + (i + 1));
             btn.GetComponent<TileButtonId>().SetTileId(i + 1);
         }
+
+        Databse.Instance.CloseDbConnection(Databse.Instance.dbconn);
     }
 
     public void ChangeTileSize(int val)

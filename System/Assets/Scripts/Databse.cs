@@ -68,21 +68,6 @@ public class Databse : MonoBehaviour
         }
     }
 
-    //internal int GetDatabaseLength()
-    //{
-    //    IDbCommand dbcmd = dbconn.CreateCommand();
-    //    string sqlQuery = "SELECT * FROM TileList";
-    //    dbcmd.CommandText = sqlQuery;
-    //    reader = dbcmd.ExecuteReader();
-
-    //    int length = reader.FieldCount - 1;
-
-    //    dbcmd.Dispose();
-    //    dbcmd = null;
-
-    //    return length;
-    //}
-
     internal void CloseDbConnection(IDbConnection dbconn)
     {
         dbconn.Close();
