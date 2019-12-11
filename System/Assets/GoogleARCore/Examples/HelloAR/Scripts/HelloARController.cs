@@ -20,43 +20,58 @@
 
         private const float k_ModelRotation = 180.0f;
         private bool m_IsQuitting = false;
+        private List<DetectedPlane> newPlanes = new List<DetectedPlane>();
 
         public void Update()
         {
             _UpdateApplicationLifecycle();
 
-            Touch touch;
+            //Touch touch;
 
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+            //if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+            //{
+            //    return;
+            //}
+
+            //TrackableHit hit;
+            //TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
+
+            //if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            //{
+            //    if ((hit.Trackable is DetectedPlane) && Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position, hit.Pose.rotation * Vector3.up) < 0)
+            //    {
+            //        Debug.Log("Hit at back of the current DetectedPlane");
+            //    }
+            //    else
+            //    {
+            //        GameObject prefab;
+            //        if (hit.Trackable is FeaturePoint)
+            //        {
+            //            prefab = AndyPointPrefab;
+            //        }
+            //        else
+            //        {
+            //            prefab = AndyPlanePrefab;
+            //        }
+
+            //        var andyObject = Instantiate(prefab, hit.Pose.position, prefab.transform.rotation, OnTheFloorManager.Instance.tilesParent);
+            //        andyObject.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + OnTheFloorManager.Instance.selectedTileId);
+            //        OnTheFloorManager.Instance.IncreaseTileCount();
+            //    }
+            //}
+
+            if (Session.Status != SessionStatus.Tracking)
             {
                 return;
             }
 
-            TrackableHit hit;
-            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
+            Session.GetTrackables<DetectedPlane>(newPlanes, TrackableQueryFilter.New);
 
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            for (int i = 0; i < newPlanes.Count; i++)
             {
-                if ((hit.Trackable is DetectedPlane) && Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position, hit.Pose.rotation * Vector3.up) < 0)
-                {
-                    Debug.Log("Hit at back of the current DetectedPlane");
-                }
-                else
-                {
-                    GameObject prefab;
-                    if (hit.Trackable is FeaturePoint)
-                    {
-                        prefab = AndyPointPrefab;
-                    }
-                    else
-                    {
-                        prefab = AndyPlanePrefab;
-                    }
-
-                    var andyObject = Instantiate(prefab, hit.Pose.position, prefab.transform.rotation, OnTheFloorManager.Instance.tilesParent);
-                    andyObject.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + OnTheFloorManager.Instance.selectedTileId);
-                    OnTheFloorManager.Instance.IncreaseTileCount();
-                }
+                GameObject andyObject = Instantiate(AndyPointPrefab, newPlanes[i].CenterPose.position, AndyPointPrefab.transform.rotation, OnTheFloorManager.Instance.tilesParent);
+                andyObject.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + OnTheFloorManager.Instance.selectedTileId);
+                //andyObject.GetComponent<DetectedPlaneTileVisualizer>().Initialize(newPlanes[i]);
             }
         }
 
