@@ -4,6 +4,7 @@
     using GoogleARCore;
     using GoogleARCore.Examples.Common;
     using UnityEngine;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -52,10 +53,9 @@
                         prefab = AndyPlanePrefab;
                     }
 
-                    var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation, OnTheFloorManager.Instance.tilesParent);
+                    var andyObject = Instantiate(prefab, hit.Pose.position, prefab.transform.rotation, OnTheFloorManager.Instance.tilesParent);
+                    andyObject.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + OnTheFloorManager.Instance.selectedTileId);
                     OnTheFloorManager.Instance.IncreaseTileCount();
-
-                    andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
                 }
             }
         }

@@ -11,8 +11,6 @@ public class Databse : MonoBehaviour
     private string conn;
     internal IDbConnection dbconn;
 
-    internal int selectedTileId; //To Delete the selected Tile
-
     private void Awake()
     {
         if(Instance == null)
@@ -47,7 +45,7 @@ public class Databse : MonoBehaviour
                 {
                     using (IDbCommand dbcmd = dbconnection.CreateCommand())
                     {
-                        dbcmd.CommandText = string.Format("DELETE FROM TileList WHERE id = \"{0}\"", selectedTileId);
+                        dbcmd.CommandText = string.Format("DELETE FROM TileList WHERE id = \"{0}\"", OnTheFloorManager.Instance.selectedTileId);
                         dbcmd.ExecuteScalar();
                         Debug.Log("Tile Succesfully Deleted");
                     }

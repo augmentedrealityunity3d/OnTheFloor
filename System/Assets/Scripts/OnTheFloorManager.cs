@@ -17,6 +17,8 @@ public class OnTheFloorManager : MonoBehaviour
     public int defaultTileSizeOption;
     public Transform tileResizeParent;
     public Text tileCount;
+    internal int selectedTileId;
+
     private int sideMenuClickedCount;
     private int tileCountNumber;
     #endregion
@@ -40,6 +42,7 @@ public class OnTheFloorManager : MonoBehaviour
         sideMenuClickedCount = 0;
         tileCountNumber = 0;
         tileCount.text = tileCountNumber.ToString();
+        selectedTileId = 1;
 
         ResetTileSprite();
         GenerateDynamicButtonForSideMenu();
@@ -96,7 +99,7 @@ public class OnTheFloorManager : MonoBehaviour
     {
         if (tilesParent.childCount > 0)
         {
-            Databse.Instance.selectedTileId = tileId;
+            selectedTileId = tileId;
 
             for (int i = 0; i < tilesParent.childCount; i++)
             {
@@ -144,6 +147,34 @@ public class OnTheFloorManager : MonoBehaviour
 
         tileResizeParent.GetChild(defaultTileSizeOption - 1).GetComponent<Toggle>().isOn = true;
     }
+    
+    public void AddNewTileSprite()
+    {
+        try
+        {
+            //Open Gallery
+            AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+            AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+
+            intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_GET_CONTENT"));
+
+            AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
+            AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "content://media/internal/images/media");
+            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
+
+            intentObject.Call<AndroidJavaObject>("setType", "image/jpeg");
+            AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
+            currentActivity.Call("startActivity", intentObject);
+
+            //Select Tile Images
+            //TODO:Add algorithm to select images from gallery
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Open gallery error" + ex);
+        }
+    }
     #endregion
 
     #region COMMON FUNCTIONS
@@ -151,47 +182,6 @@ public class OnTheFloorManager : MonoBehaviour
     {
         tileCountNumber++;
         tileCount.text = tileCountNumber.ToString("0,0");
-    }
-
-    public void AddImageInDb()
-    {
-        List<string> results = new List<string>();
-        HashSet<string> allowedExtesions = new HashSet<string>() { ".png", ".jpg", ".jpeg" };
-
-        try
-        {
-            AndroidJavaClass mediaClass = new AndroidJavaClass("android.provider.MediaStore$Images$Media");
-
-            const string dataTag = "_data";
-
-            string[] projection = new string[] { dataTag };
-            AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject currentActivity = player.GetStatic<AndroidJavaObject>("currentActivity");
-
-            string[] urisToSearch = new string[] { "EXTERNAL_CONTENT_URI", "INTERNAL_CONTENT_URI" };
-            foreach (string uriToSearch in urisToSearch)
-            {
-                AndroidJavaObject externalUri = mediaClass.GetStatic<AndroidJavaObject>(uriToSearch);
-                AndroidJavaObject finder = currentActivity.Call<AndroidJavaObject>("managedQuery", externalUri, projection, null, null, null);
-                bool foundOne = finder.Call<bool>("moveToFirst");
-                while (foundOne)
-                {
-                    int dataIndex = finder.Call<int>("getColumnIndex", dataTag);
-                    string data = finder.Call<string>("getString", dataIndex);
-                    if (allowedExtesions.Contains(Path.GetExtension(data).ToLower()))
-                    {
-                        string path = @"file:///" + data;
-                        results.Add(path);
-                    }
-
-                    foundOne = finder.Call<bool>("moveToNext");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error try to call phone gallery: " + ex);
-        }
     }
     #endregion
 }
