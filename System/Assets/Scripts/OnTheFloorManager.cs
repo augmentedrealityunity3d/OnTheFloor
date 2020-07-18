@@ -17,7 +17,9 @@ public class OnTheFloorManager : MonoBehaviour
     public int defaultTileSizeOption;
     public Transform tileResizeParent;
     public Text tileCount;
+
     internal int selectedTileId;
+    internal List<GameObject> createdTiles;
 
     private int sideMenuClickedCount;
     private int tileCountNumber;
@@ -46,6 +48,8 @@ public class OnTheFloorManager : MonoBehaviour
 
         ResetTileSprite();
         GenerateDynamicButtonForSideMenu();
+
+        createdTiles = new List<GameObject>();
     }
 
     private void Update()
@@ -73,25 +77,32 @@ public class OnTheFloorManager : MonoBehaviour
 
     public void ChangeTileSize(int val)
     {
+        float size = 0;
+
         //30cm * 30cm
         if(val == 0)
         {
-            tilesParent.localScale = new Vector2(0.3f, 0.3f);
+            size = 0.3f;
         }
         //60cm * 60cm
         else if(val == 1)
         {
-            tilesParent.localScale = new Vector2(0.6f, 0.6f);
+            size = 0.6f;
         }
         //80cm * 80cm
         else if (val == 2)
         {
-            tilesParent.localScale = new Vector2(0.8f, 0.8f);
+            size = 0.8f;
         }
         //1m * 1m
         else if (val == 3)
         {
-            tilesParent.localScale = new Vector2(1, 1);
+            size = 1f;
+        }
+
+        for(int i = 0; i < tilesParent.transform.childCount; i++)
+        {
+            tilesParent.transform.GetChild(i).localScale = new Vector2(size, size);
         }
     }
     
@@ -181,7 +192,25 @@ public class OnTheFloorManager : MonoBehaviour
     internal void IncreaseTileCount()
     {
         tileCountNumber++;
-        tileCount.text = tileCountNumber.ToString("0,0");
+        tileCount.text = tileCountNumber.ToString();
+    }
+    
+    internal void AddTilesIntoList(GameObject tile)
+    {
+        createdTiles.Add(tile);
+    }
+
+    public void RemoveAllTiles()
+    {
+        for(int i = 0; i < createdTiles.Count; i++)
+        {
+            Destroy(createdTiles[i]);
+        }
+
+        createdTiles.Clear();
+
+        tileCountNumber = 0;
+        tileCount.text = "0";
     }
     #endregion
 }

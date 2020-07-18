@@ -3,6 +3,7 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 using System.IO;
+using TMPro;
 
 public class Databse : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Databse : MonoBehaviour
             Instance = this;
         }
 
-        conn = "URI=file:" + Application.dataPath + "/On_the_floor.s3db";
+        conn = "URI=file:" + Application.dataPath + "/Assets/On_the_floor.s3db";
 
         try
         {
