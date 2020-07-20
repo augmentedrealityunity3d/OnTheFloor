@@ -151,6 +151,11 @@ namespace GoogleARCore.Examples.Common
             for (int i = 0; i < planePolygonCount; ++i)
             {
                 m_MeshColors.Add(Color.clear);
+
+                //GameObject andyObject = Instantiate(OnTheFloorManager.Instance.tilePrefab, m_DetectedPlane.CenterPose.position, OnTheFloorManager.Instance.tilePrefab.transform.rotation, OnTheFloorManager.Instance.tilesParent);
+                //andyObject.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Tiles/" + OnTheFloorManager.Instance.selectedTileId);
+                //OnTheFloorManager.Instance.IncreaseTileCount();
+                //OnTheFloorManager.Instance.AddTilesIntoList(andyObject);
             }
 
             // Feather distance 0.2 meters.
@@ -228,3 +233,4 @@ namespace GoogleARCore.Examples.Common
         }
     }
 }
+ 

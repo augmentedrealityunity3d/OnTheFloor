@@ -17,6 +17,7 @@ public class OnTheFloorManager : MonoBehaviour
     public int defaultTileSizeOption;
     public Transform tileResizeParent;
     public Text tileCount;
+    public GameObject tilePrefab;
 
     internal int selectedTileId;
     internal List<GameObject> createdTiles;
